@@ -1,0 +1,1 @@
+the project files folder contains all the assets and code for the game and will need to be opened with Godot's editor. the exported game folder contains the game exe and necessary files for it to work
