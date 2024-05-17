@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c8eonsbhjlo47"]
+
+[node name="Run" type="Button"]
+custom_minimum_size = Vector2(0, 50)
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 54.0
+offset_bottom = 28.0
+text = "Run"
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 24.0
+offset_right = 45.0
+offset_bottom = 50.0

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Consumable" load_steps=3 format=3 uid="uid://dtdyasuan7j87"]
+
+[ext_resource type="Script" path="res://Scripts/Items/consumable.gd" id="1_36hij"]
+[ext_resource type="Script" path="res://Resources/Behaviours/summoning_bone.gd" id="1_nnjkd"]
+
+[resource]
+script = ExtResource("1_36hij")
+stat_affected = 2
+strength = 0
+strength_values = [20, 30, 60]
+behaviour_script = ExtResource("1_nnjkd")
+summon = true
+item_name = "Summoning Bone"
+item_description = "An ancient bone suffused with mysterious power. Summons an ally."
+long_description = ""
+Category = 2

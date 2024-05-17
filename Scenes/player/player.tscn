@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfusch4y452r1"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_al1vx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwt05"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5mst5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wo16a"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_al1vx")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="PlayerCamera" type="Camera3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298885, 0)
+current = true
+
+[node name="FrontCollision" type="Area3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/FrontCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00362968, -0.00598192, -0.0176504)
+shape = SubResource("BoxShape3D_vwt05")
+
+[node name="BackCollision" type="Area3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/BackCollision"]
+shape = SubResource("BoxShape3D_vwt05")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.610653)
+light_color = Color(0.631373, 0.631373, 0.352941, 1)
+light_energy = 1.35
+light_volumetric_fog_energy = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5mst5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_wo16a")
+
+[connection signal="area_entered" from="Pivot/FrontCollision" to="." method="_on_front_collision_area_entered"]
+[connection signal="area_exited" from="Pivot/FrontCollision" to="." method="_on_front_collision_area_exited"]
+[connection signal="body_entered" from="Pivot/FrontCollision" to="." method="_on_front_collision_body_entered"]
+[connection signal="body_exited" from="Pivot/FrontCollision" to="." method="_on_front_collision_body_exited"]
+[connection signal="area_entered" from="Pivot/BackCollision" to="." method="_on_back_collision_area_entered"]
+[connection signal="area_exited" from="Pivot/BackCollision" to="." method="_on_back_collision_area_exited"]
+[connection signal="body_entered" from="Pivot/BackCollision" to="." method="_on_back_collision_body_entered"]
+[connection signal="body_exited" from="Pivot/BackCollision" to="." method="_on_back_collision_body_exited"]

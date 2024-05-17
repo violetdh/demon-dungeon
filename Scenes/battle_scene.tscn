@@ -1,0 +1,264 @@
+[gd_scene load_steps=12 format=3 uid="uid://bol28t3432tbp"]
+
+[ext_resource type="Script" path="res://Scripts/battle.gd" id="1_wwi02"]
+[ext_resource type="Shader" path="res://Shaders/battle_floor.gdshader" id="2_a16sf"]
+[ext_resource type="MeshLibrary" uid="uid://bdntgbv23negk" path="res://Tilesets/tileset1/tileset1.tres" id="3_523lv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np7b3"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5k6d"]
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_a4wv6"]
+font_size = 24
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gg0jr"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8d0a3"]
+noise = SubResource("FastNoiseLite_gg0jr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0sfuc"]
+render_priority = 0
+shader = ExtResource("2_a16sf")
+shader_parameter/colour_1 = Color(0, 0, 1, 1)
+shader_parameter/colour_2 = Color(0, 0.764706, 0, 1)
+shader_parameter/time_scale = 0.25
+shader_parameter/mix_amount = 0.0
+shader_parameter/noise_img = SubResource("NoiseTexture2D_8d0a3")
+
+[sub_resource type="Environment" id="Environment_d1hx6"]
+fog_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_68bnp"]
+
+[node name="BattleScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00882888, 0.0078485, 0.00330639)
+light_color = Color(0.521569, 0.0156863, 0.298039, 1)
+light_energy = 2.316
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="BattleUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("battle_scene")]
+process_mode = 3
+script = ExtResource("1_wwi02")
+battle_scene = NodePath("..")
+
+[node name="EnemyContainer" type="HBoxContainer" parent="BattleUI"]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -511.5
+offset_top = -20.0
+offset_right = 511.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="Textbox" type="Panel" parent="BattleUI"]
+visible = false
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_styles/panel = SubResource("StyleBoxFlat_np7b3")
+
+[node name="Text" type="Label" parent="BattleUI/Textbox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 13.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "AAAAAAAAAAA DRAGON!"
+label_settings = SubResource("LabelSettings_g5k6d")
+
+[node name="Ticker" type="Label" parent="BattleUI/Textbox"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -34.0
+offset_right = -26.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "..."
+label_settings = SubResource("LabelSettings_a4wv6")
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -277.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BattleUI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 85
+alignment = 1
+
+[node name="PartyPanel" type="Panel" parent="BattleUI/MarginContainer/HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(325, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/MarginContainer/HBoxContainer/PartyPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/MarginContainer/HBoxContainer/PartyPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BattleUI/MarginContainer/HBoxContainer/PartyPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Party"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BattleUI/MarginContainer/HBoxContainer/PartyPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PartyContainer" type="VBoxContainer" parent="BattleUI/MarginContainer/HBoxContainer/PartyPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="ActionsPanel" type="Panel" parent="BattleUI/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/MarginContainer/HBoxContainer/ActionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/MarginContainer/HBoxContainer/ActionsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BattleUI/MarginContainer/HBoxContainer/ActionsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Actions"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BattleUI/MarginContainer/HBoxContainer/ActionsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActionContainer" type="VBoxContainer" parent="BattleUI/MarginContainer/HBoxContainer/ActionsPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SkillsPanel" type="Panel" parent="BattleUI/MarginContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BattleUI/MarginContainer/HBoxContainer/SkillsPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BattleUI/MarginContainer/HBoxContainer/SkillsPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BattleUI/MarginContainer/HBoxContainer/SkillsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skills"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BattleUI/MarginContainer/HBoxContainer/SkillsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SkillContainer" type="VBoxContainer" parent="BattleUI/MarginContainer/HBoxContainer/SkillsPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.839218, -13.205)
+visible = false
+material_override = SubResource("ShaderMaterial_0sfuc")
+size = Vector3(5.04238, 0.991716, 34.2094)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.68012, 0.733101, 0, -0.733101, 0.68012, -7.95335, 1.49272, -8.87948)
+material_override = SubResource("ShaderMaterial_0sfuc")
+size = Vector3(204.986, 0.991716, 120.273)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.68012, 0.733101, 0, -0.733101, 0.68012, 0.628874, 0.896668, 1.30113)
+material_override = SubResource("ShaderMaterial_0sfuc")
+transparency = 0.67
+cast_shadow = 0
+flip_faces = true
+size = Vector3(24.6365, 0.991716, 32.5542)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d1hx6")
+camera_attributes = SubResource("CameraAttributesPractical_68bnp")
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.605, 0.475, 0.93)
+mesh_library = ExtResource("3_523lv")
+data = {
+"cells": PackedInt32Array(0, 0, 1441793, 65534, 0, 655361, 65533, 0, 1048580, 2, 65535, 1048582, 1, 0, 1441793, 2, 0, 1179652, 65534, 65535, 1441798, 6, 65516, 1441793, 6, 65515, 1441793, 7, 65512, 1441793, 8, 65509, 1441793, 9, 65504, 1441793, 11, 65499, 1441793, 14, 65491, 1441793, 16, 65485, 1441793, 20, 65470, 1441793, 29, 65443, 1441793, 37, 65420, 1441793, 49, 65382, 1441793, 72, 65309, 1441793, 139, 65106, 1441793, 65535, 0, 1441798, 65535, 1, 655361, 0, 1, 655361, 1, 1, 1179652, 65534, 1, 655361, 65533, 1, 655361, 65533, 65535, 1310720, 65534, 65534, 1048583, 1, 65535, 1048583, 0, 65535, 1048583, 65535, 65535, 1048583, 3, 65535, 1441792, 65535, 5, 1441792, 65533, 65534, 1441799, 3, 65534, 1441799)
+}

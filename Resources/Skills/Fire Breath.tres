@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://d0rekxl3maudv"]
+
+[ext_resource type="Script" path="res://Scripts/skill.gd" id="1_whtyf"]
+
+[resource]
+script = ExtResource("1_whtyf")
+name = "Fire Breath"
+cost_type = "MP"
+mp_cost = 10
+hp_cost = 0.0
+element = 3
+power = 15
+accuracy_mod = 1.0
+target_all = false

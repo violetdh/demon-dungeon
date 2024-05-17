@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=8 format=3 uid="uid://bfrt3h114htid"]
+
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_glw0p"]
+[ext_resource type="Resource" uid="uid://da5dhklebe4ly" path="res://Resources/Skills/Ice Breath.tres" id="2_26my2"]
+[ext_resource type="Texture2D" uid="uid://2gqtisgafamf" path="res://Sprites/Enemies/Blob/render1.png" id="2_xlbvl"]
+[ext_resource type="Texture2D" uid="uid://bcwjddyymw5jp" path="res://Sprites/Enemies/Blob/render2.png" id="3_58w0a"]
+[ext_resource type="Texture2D" uid="uid://b4cr0m6uu3y5m" path="res://Sprites/Enemies/Blob/render3.png" id="4_scs3n"]
+[ext_resource type="Texture2D" uid="uid://b3wmjc1q5m5d2" path="res://Sprites/Enemies/Blob/render4.png" id="5_l31im"]
+[ext_resource type="Texture2D" uid="uid://itvrug7w8re0" path="res://Sprites/Enemies/Blob/render5.png" id="6_kp8s2"]
+
+[resource]
+script = ExtResource("1_glw0p")
+name = "Blob"
+textures = Array[Texture]([ExtResource("2_xlbvl"), ExtResource("3_58w0a"), ExtResource("4_scs3n"), ExtResource("5_l31im"), ExtResource("6_kp8s2")])
+weakness = "FIRE"
+level = 1
+strength = 5
+technique = 5
+magic = 5
+agility = 5
+vitality = 5
+luck = 5
+current_health = 100000
+current_mana = 100000
+skills = Array[Resource]([ExtResource("2_26my2")])

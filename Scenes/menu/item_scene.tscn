@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3n56y5o2foci"]
+
+[ext_resource type="Script" path="res://Scripts/Items/item_scene.gd" id="1_q6bgv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3vbwu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sefkr"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sfo8b"]
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtbde"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="item_scene" type="Panel"]
+custom_minimum_size = Vector2(0, 100)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3vbwu")
+script = ExtResource("1_q6bgv")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemName" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "item_name"
+label_settings = SubResource("LabelSettings_sefkr")
+
+[node name="ItemDescription" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "item_description"
+label_settings = SubResource("LabelSettings_sfo8b")
+autowrap_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="ItemType" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "item_type"
+label_settings = SubResource("LabelSettings_vtbde")
+
+[node name="Consume" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Use"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/Consume" to="." method="_on_consume_pressed"]

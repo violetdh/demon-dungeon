@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Consumable" load_steps=3 format=3 uid="uid://dxua6r6q7c38w"]
+
+[ext_resource type="Script" path="res://Resources/Behaviours/attuning_stone.gd" id="1_cdstr"]
+[ext_resource type="Script" path="res://Scripts/Items/consumable.gd" id="2_ukfnl"]
+
+[resource]
+script = ExtResource("2_ukfnl")
+stat_affected = 2
+strength = 0
+strength_values = [20, 30, 60]
+behaviour_script = ExtResource("1_cdstr")
+summon = true
+item_name = "Chaotic Attunement Stone"
+item_description = "A small stone that radiates an over-bright iridescent light."
+long_description = ""
+Category = 2

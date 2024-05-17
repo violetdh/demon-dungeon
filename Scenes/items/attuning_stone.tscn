@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=3 uid="uid://dc7o8k12xv7a3"]
+
+[ext_resource type="Script" path="res://Scripts/Items/world_item.gd" id="1_6w1qf"]
+[ext_resource type="Resource" uid="uid://dxua6r6q7c38w" path="res://Resources/Items/attuning_stone.tres" id="2_q1qsv"]
+[ext_resource type="Shader" path="res://Shaders/battle_floor.gdshader" id="3_fisb7"]
+[ext_resource type="Material" uid="uid://djokfp3oc60sr" path="res://Shaders/outline.tres" id="4_23g2a"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x6tyl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_adem2"]
+noise = SubResource("FastNoiseLite_x6tyl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5ssen"]
+render_priority = 0
+shader = ExtResource("3_fisb7")
+shader_parameter/colour_1 = null
+shader_parameter/colour_2 = Color(1, 0, 0, 1)
+shader_parameter/time_scale = 0.0
+shader_parameter/mix_amount = 0.5
+shader_parameter/noise_img = SubResource("NoiseTexture2D_adem2")
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5qlf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ii53"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Item" type="StaticBody3D" groups=["interactable"]]
+script = ExtResource("1_6w1qf")
+item_name = "Attuning Stone"
+item = ExtResource("2_q1qsv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_5ssen")
+mesh = SubResource("BoxMesh_c5qlf")
+
+[node name="Outline" type="MeshInstance3D" parent="MeshInstance3D"]
+visible = false
+mesh = SubResource("BoxMesh_c5qlf")
+surface_material_override/0 = ExtResource("4_23g2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ii53")

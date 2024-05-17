@@ -1,0 +1,36 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbutulaems3jw"]
+
+[ext_resource type="Script" path="res://Scripts/Items/world_item.gd" id="1_n3p0t"]
+[ext_resource type="Resource" uid="uid://bn87ssooqjxyi" path="res://Resources/Items/health_potion.tres" id="2_1281v"]
+[ext_resource type="Texture2D" uid="uid://ckiwvpl7y0wup" path="res://Textures/crate.png" id="3_ba7jv"]
+[ext_resource type="Texture2D" uid="uid://d4c8lkqquo6es" path="res://Textures/mana crate.png" id="3_yji46"]
+[ext_resource type="Material" uid="uid://djokfp3oc60sr" path="res://Shaders/outline.tres" id="4_y15yb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vx2mu"]
+albedo_texture = ExtResource("3_yji46")
+
+[sub_resource type="BoxMesh" id="BoxMesh_c5qlf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg6cy"]
+albedo_texture = ExtResource("3_ba7jv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ii53"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Item" type="StaticBody3D" groups=["interactable"]]
+script = ExtResource("1_n3p0t")
+item_name = "Mana Potion"
+item = ExtResource("2_1281v")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_vx2mu")
+mesh = SubResource("BoxMesh_c5qlf")
+surface_material_override/0 = SubResource("StandardMaterial3D_qg6cy")
+
+[node name="Outline" type="MeshInstance3D" parent="MeshInstance3D"]
+visible = false
+mesh = SubResource("BoxMesh_c5qlf")
+surface_material_override/0 = ExtResource("4_y15yb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ii53")

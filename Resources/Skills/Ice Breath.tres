@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3 uid="uid://da5dhklebe4ly"]
+
+[ext_resource type="Script" path="res://Scripts/skill.gd" id="1_frpyh"]
+
+[resource]
+script = ExtResource("1_frpyh")
+name = "Ice Breath"
+cost_type = "MP"
+mp_cost = 10
+hp_cost = 0.0
+element = 1
+power = 15
+accuracy_mod = 1.0
+target_all = false

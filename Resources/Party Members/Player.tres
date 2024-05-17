@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PartyMember" load_steps=3 format=3 uid="uid://c5lfrsls6u0pq"]
+
+[ext_resource type="Script" path="res://Scripts/party_member.gd" id="1_a2awn"]
+[ext_resource type="Resource" uid="uid://ef57i82kwjm7" path="res://Resources/Skills/Attack.tres" id="2_rdlmy"]
+
+[resource]
+script = ExtResource("1_a2awn")
+name = "You"
+level = 1
+strength = 5
+technique = 5
+magic = 5
+agility = 6
+vitality = 5
+luck = 5
+current_health = 1000
+current_mana = 50
+player = true
+skills = Array[Resource]([ExtResource("2_rdlmy")])

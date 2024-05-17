@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Consumable" load_steps=3 format=3 uid="uid://bxv8llesocc6w"]
+
+[ext_resource type="Script" path="res://Resources/Behaviours/health_potion.gd" id="1_vcxjd"]
+[ext_resource type="Script" path="res://Scripts/Items/consumable.gd" id="2_cnpio"]
+
+[resource]
+script = ExtResource("2_cnpio")
+stat_affected = 1
+strength = 1
+strength_values = null
+behaviour_script = ExtResource("1_vcxjd")
+summon = null
+item_name = "Mana Potion"
+item_description = "Mana Potion!"
+long_description = null
+item_object = Object(MeshInstance3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_scale":0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"mesh":null,"skin":null,"skeleton":NodePath(".."),"script":null)
+
+Category = 2

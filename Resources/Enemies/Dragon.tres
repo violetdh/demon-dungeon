@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=8 format=3 uid="uid://d1be7nl8r2iv4"]
+
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_xsoni"]
+[ext_resource type="Resource" uid="uid://d0rekxl3maudv" path="res://Resources/Skills/Fire Breath.tres" id="2_oj6y2"]
+[ext_resource type="Texture2D" uid="uid://dlx2oflxdselv" path="res://Sprites/Enemies/Dragon/render1.png" id="3_ica5h"]
+[ext_resource type="Texture2D" uid="uid://pvyl8t6yvmhj" path="res://Sprites/Enemies/Dragon/render2.png" id="4_13xxq"]
+[ext_resource type="Texture2D" uid="uid://dpf23esrvx8c3" path="res://Sprites/Enemies/Dragon/render3.png" id="5_5wjvy"]
+[ext_resource type="Texture2D" uid="uid://b50or77jgbnto" path="res://Sprites/Enemies/Dragon/render4.png" id="6_1vo12"]
+[ext_resource type="Texture2D" uid="uid://dhes8a3dchfvl" path="res://Sprites/Enemies/Dragon/render5.png" id="7_ckxmw"]
+
+[resource]
+script = ExtResource("1_xsoni")
+name = "Dragon"
+textures = Array[Texture]([ExtResource("3_ica5h"), ExtResource("4_13xxq"), ExtResource("5_5wjvy"), ExtResource("6_1vo12"), ExtResource("7_ckxmw")])
+weakness = "ICE"
+level = 1
+strength = 5
+technique = 5
+magic = 5
+agility = 5
+vitality = 5
+luck = 5
+current_health = 100000
+current_mana = 100000
+skills = Array[Resource]([ExtResource("2_oj6y2")])

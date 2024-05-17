@@ -1,0 +1,94 @@
+[gd_scene load_steps=7 format=3 uid="uid://duykkfosso6j0"]
+
+[ext_resource type="Script" path="res://Scripts/battle_party_member.gd" id="1_t3mtu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8qq3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4chsp"]
+bg_color = Color(0.980392, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gso2y"]
+font_size = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2e0g"]
+bg_color = Color(0, 0.619608, 0.729412, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ec3t2"]
+font_size = 12
+
+[node name="PartyMember" type="Panel"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_t3mtu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Player"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HP" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 15)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_j8qq3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4chsp")
+value = 50.0
+show_percentage = false
+
+[node name="HPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HP"]
+layout_mode = 2
+offset_top = -21.0
+offset_right = 49.0
+offset_bottom = 5.0
+text = "HP"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HP"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -17.0
+offset_right = 70.0
+offset_bottom = 6.0
+label_settings = SubResource("LabelSettings_gso2y")
+
+[node name="MP" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 15)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_j8qq3")
+theme_override_styles/fill = SubResource("StyleBoxFlat_p2e0g")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MP"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = -17.0
+offset_right = 70.0
+offset_bottom = 6.0
+label_settings = SubResource("LabelSettings_ec3t2")
+
+[node name="MPLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MP"]
+layout_mode = 2
+offset_top = -22.0
+offset_right = 49.0
+offset_bottom = 4.0
+text = "MP
+"

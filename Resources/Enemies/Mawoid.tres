@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=8 format=3 uid="uid://ccwdodxsif0br"]
+
+[ext_resource type="Script" path="res://Scripts/base_enemy.gd" id="1_vksln"]
+[ext_resource type="Resource" uid="uid://c4pf6k3igwo8w" path="res://Resources/Skills/Earthquake.tres" id="2_se6q5"]
+[ext_resource type="Texture2D" uid="uid://bfj6n8hkv2qdr" path="res://Sprites/Enemies/Mawoid/render1.png" id="3_s4gj2"]
+[ext_resource type="Texture2D" uid="uid://dppto8jniu4ei" path="res://Sprites/Enemies/Mawoid/render2.png" id="4_4ov8r"]
+[ext_resource type="Texture2D" uid="uid://cp4xdw4f5qb80" path="res://Sprites/Enemies/Mawoid/render3.png" id="5_uvx3g"]
+[ext_resource type="Texture2D" uid="uid://cgf2heppf58xg" path="res://Sprites/Enemies/Mawoid/render4.png" id="6_j4gn5"]
+[ext_resource type="Texture2D" uid="uid://x0mxdyjcilox" path="res://Sprites/Enemies/Mawoid/render5.png" id="7_kh5ih"]
+
+[resource]
+script = ExtResource("1_vksln")
+name = "Mawoid"
+textures = Array[Texture]([ExtResource("3_s4gj2"), ExtResource("4_4ov8r"), ExtResource("5_uvx3g"), ExtResource("6_j4gn5"), ExtResource("7_kh5ih")])
+weakness = "WIND"
+level = 1
+strength = 5
+technique = 5
+magic = 5
+agility = 5
+vitality = 5
+luck = 5
+current_health = 100000
+current_mana = 100000
+skills = Array[Resource]([ExtResource("2_se6q5")])

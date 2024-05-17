@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=3 uid="uid://s6n5ktp6rmrx"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_pg11h"]
+[ext_resource type="PackedScene" uid="uid://dfusch4y452r1" path="res://Scenes/player/player.tscn" id="1_vyp2t"]
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="3_pv42m"]
+[ext_resource type="Script" path="res://Scripts/Items/item_menu.gd" id="4_37djd"]
+[ext_resource type="Script" path="res://Scripts/hud.gd" id="5_uh5vk"]
+[ext_resource type="PackedScene" uid="uid://dby370xby6tcj" path="res://Scenes/items/health_potion.tscn" id="6_1480h"]
+[ext_resource type="Resource" uid="uid://dtdyasuan7j87" path="res://Resources/Items/summoning_bone.tres" id="7_islim"]
+
+[sub_resource type="Theme" id="Theme_o7s6k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u45ad"]
+bg_color = Color(0.12549, 0.254902, 0.376471, 0.337255)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q05ky"]
+font_size = 32
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_pg11h")
+
+[node name="player" parent="." instance=ExtResource("1_vyp2t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+use_collision = true
+size = Vector3(24.4367, 1, 30.4921)
+
+[node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("3_pv42m")
+
+[node name="PauseMenu" type="Panel" parent="Menu"]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.0
+offset_top = -303.0
+offset_right = 521.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_o7s6k")
+theme_override_styles/panel = SubResource("StyleBoxFlat_u45ad")
+
+[node name="Paused" type="Label" parent="Menu/PauseMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_top = 8.0
+offset_right = 56.5
+offset_bottom = 56.0
+grow_horizontal = 2
+text = "Paused"
+label_settings = SubResource("LabelSettings_q05ky")
+horizontal_alignment = 1
+
+[node name="Resume" type="Button" parent="Menu/PauseMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -15.5
+offset_right = 35.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[node name="Items" type="Panel" parent="Menu/PauseMenu"]
+layout_mode = 0
+offset_left = 645.0
+offset_top = 104.0
+offset_right = 1004.0
+offset_bottom = 497.0
+script = ExtResource("4_37djd")
+
+[node name="Label" type="Label" parent="Menu/PauseMenu/Items"]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.0
+offset_right = 22.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "Items"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Menu/PauseMenu/Items"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 38.0
+offset_right = 344.0
+offset_bottom = 370.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/PauseMenu/Items/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HUD" type="Control" parent="Menu"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_uh5vk")
+
+[node name="HealthBar" type="ProgressBar" parent="Menu/HUD"]
+process_mode = 3
+layout_mode = 0
+offset_left = 31.0
+offset_top = 542.0
+offset_right = 270.0
+offset_bottom = 569.0
+show_percentage = false
+
+[node name="HealthValue" type="Label" parent="Menu/HUD/HealthBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthLabel" type="Label" parent="Menu/HUD"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 519.0
+offset_right = 87.0
+offset_bottom = 545.0
+text = "Health:"
+
+[node name="ManaBar" type="ProgressBar" parent="Menu/HUD"]
+process_mode = 3
+layout_mode = 0
+offset_left = 31.0
+offset_top = 592.0
+offset_right = 270.0
+offset_bottom = 619.0
+show_percentage = false
+
+[node name="ManaValue" type="Label" parent="Menu/HUD/ManaBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ManaLabel" type="Label" parent="Menu/HUD"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 569.0
+offset_right = 87.0
+offset_bottom = 595.0
+text = "Mana:"
+
+[node name="health_potion" parent="." instance=ExtResource("6_1480h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430775, 0.7936, -6.64727)
+item = ExtResource("7_islim")
+
+[connection signal="pressed" from="Menu/PauseMenu/Resume" to="Menu" method="_on_resume_pressed"]
