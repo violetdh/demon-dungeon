@@ -1,1 +1,5 @@
-the project files folder contains all the assets and code for the game and will need to be opened with Godot's editor. the exported game folder contains the game exe and necessary files for it to work. arrow keys to move, click on things to interact with them. small crates/cubes contain items. your goal is to find the exit
+# Panic! Lost In Demon Dungeon
+
+This is a game I created for my self-guided final project at university. All assets used are original. The exported version may not work correctly, so if you're looking at this you may need to open it in the editor - though this may just be a problem with running the exe on Linux, since I made this before switching and didn't test it on any platforms but Windows. 
+
+The goal is to find the exit. Click on things in the environment to interact with them. "Summoning Bones" allow you to create allies, while the prisms(?) will allow you to access elemental moves. Combat is turn-based and happens in random encounters.
