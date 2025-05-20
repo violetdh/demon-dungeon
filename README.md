@@ -1,4 +1,4 @@
-# Panic! Lost In Demon Dungeon
+# Panic! Lost In Demon Dimension
 
 This is a game I created for my self-guided final project at university. All assets used are original. The exported version may not work correctly, so if you're looking at this you may need to open it in the editor - though this may just be a problem with running the exe on Linux, since I made this before switching and didn't test it on any platforms but Windows. 
 
